@@ -4,10 +4,12 @@ const dbConnection = process.env.DATABASE_URL || localpg;
 module.exports = {
 
     development: {
-      client: 'sqlite3',
-      useNullAsDefault: true,
+      client: 'pg',
       connection: {
-        filename: './database/AdviceGiver.db3'
+        host:     "localhost",
+        database: "advice-giver",
+        user:     "postgres",
+        password: "password",
       },
       migrations: {
         directory: './database/migrations'
@@ -15,7 +17,7 @@ module.exports = {
       seeds: {
         directory: './database/seeds'
       }
-    },
+    }
   
     // staging: {
     //   client: 'postgresql',

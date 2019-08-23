@@ -12,6 +12,7 @@ const announcementRoute = require('../routes/announcementRoute.js');
 const userAdvisorGroupRoute = require('../routes/userAdvisorGroupRoute.js');
 
 server.use(express.json());
+server.use(express.json());
 server.use(helmet());
 server.use(cors());
 
