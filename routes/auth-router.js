@@ -4,6 +4,49 @@ const bcrypt = require( "bcryptjs" );
 const secret = require( "../config/secrets.js" );
 const userModel = require( "../models/userModel.js" );
 
+/**
+ * @api {post} /auth/register   Register a new user.
+ * @apiVersion 1.0.0
+ * @apiName RegisterUser
+ * @apiGroup Auth
+ *
+ * @apiParam {String} username  Users username
+ * @apiParam {String} password  Users password
+ * @apiParam {Email} email  Users email
+ * @apiParam {boolean} adviceGiver  If the user is a advice giver or not
+ * @apiParam {String} [expertise]  Advice Giver Expertise
+ * @apiParam {Number} [yearsOfExperience]  Advice Giver Years of Experience
+ * @apiParam {Number} [age]  Users age
+ *
+ * @apiExample Request example:
+ * const request = axios.create({
+ *     baseURL: 'https://advice-giver-backend.herokuapp.com',
+        timeout: 1000,
+ * });
+ * request.post('/auth/register', {
+    "username": "jeremiah",
+    "password": "password",
+    "email": "jeremiahtenbrink@gmail.com",
+    "adviceGiver": true,
+    "expertise": "life",
+    "yearsOfExperience": 10,
+    "age": 33
+});
+ *
+ * @apiSuccessExample Request Success
+ *[
+     {
+        "id": 8,
+        "username": "jeremiah",
+        "email": "jeremiahtenbrink@gmail.com",
+        "adviceGiver": true,
+        "expertise": "life",
+        "yearsOfExperience": 10,
+        "age": 33
+      }
+ ]
+ *
+ */
 router.post( "/register", ( req, res ) => {
   let user = req.body;
   let advice = req.body.adviceGiver;
@@ -35,6 +78,40 @@ router.post( "/register", ( req, res ) => {
   
 } );
 
+/**
+ * @api {post} /auth/login   Login a user
+ * @apiVersion 1.0.0
+ * @apiName UserLogin
+ * @apiGroup Auth
+ *
+ * @apiParam {String} username  Users username
+ * @apiParam {String} password  Users password
+ *
+ * @apiExample Request example:
+ * const request = axios.create({
+ *     baseURL: 'https://advice-giver-backend.herokuapp.com',
+        timeout: 1000,
+ * });
+ * request.post('/auth/register', {
+    "username": "jeremiah",
+    "password": "password"
+});
+ *
+ * @apiSuccessExample Request Success
+ *{
+  "id": 8,
+  "username": "jeremiah",
+  "password": "$2a$10$hufhEDza64YtcfmTnOK2E.n2AV6aS9eUoiYZ54V91FkqYL6Dpewj2",
+  "adviceGiver": true,
+  "expertise": "life",
+  "yearsOfExperience": 10,
+  "age": 33,
+  "email": "jeremiahtenbrink@gmail.com",
+  "img": null,
+  "token": "some really long string"
+}
+ *
+ */
 router.post( "/login", ( req, res ) => {
   let { username, password } = req.body;
   

@@ -1,0 +1,12 @@
+{
+  "name": "Advice Giver",
+  "version": "1.0.0",
+  "description": "Api for Advice Giver",
+  "title": "Advice Giver Api",
+  "url": "https://advice-giver-backend.herokuapp.com",
+  "sampleUrl": "https://advice-giver-backend.herokuapp.com",
+  "template": {
+    "withGenerator": true,
+    "withCompare": true
+  }
+}
