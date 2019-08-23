@@ -7,7 +7,7 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "test": "jest --watch --verbose",
-    "migrate": "knex migrate:latests --env production",
+    "migrate": "knex migrate:latest --env production",
     "seed": "knex seed:run --env production"
   },
   "dependencies": {
