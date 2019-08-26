@@ -135,5 +135,49 @@
         "url": "https://advice-giver-backend.herokuapp.com/auth/login"
       }
     ]
+  },
+  {
+    "type": "get",
+    "url": "users/",
+    "title": "Get all users",
+    "version": "1.0.0",
+    "name": "GetUsers",
+    "group": "Users",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User token given when user logs in.</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Request example:",
+        "content": "const request = axios.create({\n    baseURL: 'https://advice-giver-backend.herokuapp.com',\n        timeout: 1000,\n        headers: {\n            authorization: \"userTokenGoesHere\"\n        }\n});\nrequest.get('users/');",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Request Success",
+          "content": "[\n {\n        \"id\": 8,\n        \"username\": \"jeremiah\",\n        \"email\": \"jeremiahtenbrink@gmail.com\",\n        \"adviceGiver\": true,\n        \"expertise\": \"life\",\n        \"yearsOfExperience\": 10,\n        \"age\": 33\n      }\n ]",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/userRouter.js",
+    "groupTitle": "Users",
+    "sampleRequest": [
+      {
+        "url": "https://advice-giver-backend.herokuapp.comusers/"
+      }
+    ]
   }
 ]

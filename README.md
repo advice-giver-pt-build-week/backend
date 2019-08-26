@@ -6,6 +6,9 @@ Api for Advice Giver
 	- [Register a new user.](#register-a-new-user.)
 	- [Login a user](#login-a-user)
 	
+- [Users](#users)
+	- [Get all users](#get-all-users)
+	
 
 
 # Auth
@@ -112,5 +115,51 @@ Request Success
   "img": null,
   "token": "some really long string"
 }
+```
+# Users
+
+## Get all users
+
+
+
+	GET users/
+
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| authorization			| String			|  <p>User token given when user logs in.</p>							|
+
+### Examples
+
+Request example:
+
+```
+const request = axios.create({
+    baseURL: 'https://advice-giver-backend.herokuapp.com',
+        timeout: 1000,
+        headers: {
+            authorization: "userTokenGoesHere"
+        }
+});
+request.get('users/');
+```
+
+### Success Response
+
+Request Success
+
+```
+[
+ {
+        "id": 8,
+        "username": "jeremiah",
+        "email": "jeremiahtenbrink@gmail.com",
+        "adviceGiver": true,
+        "expertise": "life",
+        "yearsOfExperience": 10,
+        "age": 33
+      }
+ ]
 ```
 

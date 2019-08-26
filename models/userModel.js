@@ -9,7 +9,13 @@ function findUser( username ){
 }
 
 function add( user ){
-  return db( "users" ).insert( user, ['id', 'username', 'email', 'adviceGiver', 'expertise', 'yearsOfExperience', 'age'] );
+  return db( "users" )
+    .insert( user,
+      [
+        "id", "username", "email", "adviceGiver", "expertise",
+        "yearsOfExperience", "age"
+      ]
+    );
 }
 
 async function update( id, changes ){
@@ -26,5 +32,9 @@ function findById( id ){
 }
 
 function findAll(){
-  return db( "users" );
+  return db( "users" )
+    .returning( [
+      "id", "username", "adviceGiver", "expertise", "yearsOfExperience", "age",
+      "email", "img"
+    ] );
 }

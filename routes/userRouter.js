@@ -3,7 +3,38 @@ const userModel = require('../models/userModel.js');
 const restricted = require('../auth/restricted.js')
 //users path..
 
-//works
+/**
+ * @api {get} users/   Get all users
+ * @apiVersion 1.0.0
+ * @apiName GetUsers
+ * @apiGroup Users
+ *
+ * @apiHeader {String} authorization User token given when user logs in.
+ *
+ * @apiExample Request example:
+ * const request = axios.create({
+ *     baseURL: 'https://advice-giver-backend.herokuapp.com',
+        timeout: 1000,
+        headers: {
+            authorization: "userTokenGoesHere"
+        }
+ * });
+ * request.get('users/');
+ *
+ * @apiSuccessExample Request Success
+ *[
+ {
+        "id": 8,
+        "username": "jeremiah",
+        "email": "jeremiahtenbrink@gmail.com",
+        "adviceGiver": true,
+        "expertise": "life",
+        "yearsOfExperience": 10,
+        "age": 33
+      }
+ ]
+ *
+ */
 router.get('/', restricted, (req, res) => {
     userModel
     .findAll()
@@ -13,7 +44,7 @@ router.get('/', restricted, (req, res) => {
     .catch(error => {
         res.status(500).json({ message: 'Internal Server Error'})
     })
-})
+});
 //works
 router.get('/:id', restricted, (req, res) => {
     const id = req.params.id;
