@@ -7,7 +7,9 @@ Api for Advice Giver
 	- [Login a user](#login-a-user)
 	
 - [Users](#users)
+	- [Get user](#get-user)
 	- [Get all users](#get-all-users)
+	- [Update user](#update-user)
 	
 
 
@@ -118,11 +120,57 @@ Request Success
 ```
 # Users
 
+## Get user
+
+
+
+	GET /users/:id
+
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| authorization			| String			|  <p>User token given when user logs in.</p>							|
+
+### Examples
+
+Request example:
+
+```
+const request = axios.create({
+    baseURL: 'https://advice-giver-backend.herokuapp.com',
+        timeout: 1000,
+        headers: {
+            authorization: "userTokenGoesHere"
+        }
+});
+request.get('users/4');
+```
+
+### Success Response
+
+Request Success
+
+```
+[
+ {
+        "id": 1,
+        "username": "Amelia",
+        "password": "password",
+        "adviceGiver": false,
+        "expertise": null,
+        "yearsOfExperience": null,
+        "age": 25,
+        "email": "amelia@yahoo.com",
+        "img": null
+    }
+ ]
+```
 ## Get all users
 
 
 
-	GET users/
+	GET /users/
 
 ### Headers
 
@@ -152,14 +200,97 @@ Request Success
 ```
 [
  {
-        "id": 8,
-        "username": "jeremiah",
-        "email": "jeremiahtenbrink@gmail.com",
-        "adviceGiver": true,
-        "expertise": "life",
-        "yearsOfExperience": 10,
-        "age": 33
-      }
+        "id": 1,
+        "username": "Amelia",
+        "password": "password",
+        "adviceGiver": false,
+        "expertise": null,
+        "yearsOfExperience": null,
+        "age": 25,
+        "email": "amelia@yahoo.com",
+        "img": null
+    },
+ {
+        "id": 2,
+        "username": "Norah",
+        "password": "password",
+        "adviceGiver": false,
+        "expertise": null,
+        "yearsOfExperience": null,
+        "age": 25,
+        "email": "norah@gmail.com",
+        "img": null
+    },
+ ...
+ ]
+```
+## Update user
+
+
+
+	PUT /users/:id
+
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| authorization			| String			|  <p>User token given when user logs in.</p>							|
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| id			| Integer			| **optional** <p>Users id</p>							|
+| username			| String			| **optional** <p>Users username</p>							|
+| password			| String			| **optional** <p>Users password</p>							|
+| email			| Email			| **optional** <p>Users email</p>							|
+| adviceGiver			| boolean			| **optional** <p>If the user is a advice giver or not</p>							|
+| expertise			| String			| **optional** <p>Advice Giver Expertise</p>							|
+| yearsOfExperience			| Number			| **optional** <p>Advice Giver Years of Experience</p>							|
+| age			| Number			| **optional** <p>Users age</p>							|
+
+### Examples
+
+Request example:
+
+```
+const request = axios.create({
+    baseURL: 'https://advice-giver-backend.herokuapp.com',
+        timeout: 1000,
+        headers: {
+            authorization: "userTokenGoesHere"
+        }
+});
+request.put('users/4', {
+  id: 1,
+  "username": "username",
+  "password": "password",
+  "adviceGiver": true,
+  "expertise": null,
+  "yearsOfExperience": null,
+  "age": 25,
+  "email": "Some email address",
+  "img": "imgUrl"
+});
+```
+
+### Success Response
+
+Request Success
+
+```
+[
+ {
+        "id": 1,
+        "username": "Amelia",
+        "password": "password",
+        "adviceGiver": false,
+        "expertise": null,
+        "yearsOfExperience": null,
+        "age": 25,
+        "email": "amelia@yahoo.com",
+        "img": null
+    }
  ]
 ```
 
