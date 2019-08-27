@@ -289,6 +289,285 @@ define({ "api": [
     ]
   },
   {
+    "type": "delete",
+    "url": "/messages/:id",
+    "title": "Deletes a message",
+    "version": "1.0.0",
+    "name": "DelMessage",
+    "group": "Messages",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User token given when user logs in.</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Request example:",
+        "content": "const request = axios.create({\n    baseURL: 'https://advice-giver-backend.herokuapp.com',\n        timeout: 1000,\n        headers: {\n            authorization: \"userTokenGoesHere\"\n        }\n});\nrequest.delete('/messages/1');",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Request Success",
+          "content": "[\n {\n        \"id\": 2,\n        \"message\": \"I am looking to become a software developer and want to know the quickest way to become employed and be competent.\",\n        \"private\": false,\n        \"user_id\": 2,\n        \"type\": \"Academics\",\n        \"title\": \"Help with career goals.\",\n        \"isAnswered\": false\n    },\n {\n        \"id\": 3,\n        \"message\": \"What kind of computer do you recommend for someone wanting to become a software developer?\",\n        \"private\": false,\n        \"user_id\": 2,\n        \"type\": \"Academics\",\n        \"title\": \"Which computer?\",\n        \"isAnswered\": false\n    },...\n ]",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/messageRoute.js",
+    "groupTitle": "Messages",
+    "sampleRequest": [
+      {
+        "url": "https://advice-giver-backend.herokuapp.com/messages/:id"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/messages",
+    "title": "Get all messages",
+    "version": "1.0.0",
+    "name": "GetMessages",
+    "group": "Messages",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User token given when user logs in.</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Request example:",
+        "content": "const request = axios.create({\n    baseURL: 'https://advice-giver-backend.herokuapp.com',\n        timeout: 1000,\n        headers: {\n            authorization: \"userTokenGoesHere\"\n        }\n});\nrequest.put('users/4', {\n  id: 1,\n});",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Request Success",
+          "content": "[\n {\n        \"id\": 1,\n        \"message\": \"I have question about my finances.  I would like to inquire into whether or not I buy call options or go long the S&P via an index fund.\",\n        \"private\": false,\n        \"user_id\": 1,\n        \"type\": \"Finance\",\n        \"title\": \"Help with money\",\n        \"isAnswered\": false\n    },\n {\n        \"id\": 2,\n        \"message\": \"I am looking to become a software developer and want to know the quickest way to become employed and be competent.\",\n        \"private\": false,\n        \"user_id\": 2,\n        \"type\": \"Academics\",\n        \"title\": \"Help with career goals.\",\n        \"isAnswered\": false\n    },...\n ]",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/messageRoute.js",
+    "groupTitle": "Messages",
+    "sampleRequest": [
+      {
+        "url": "https://advice-giver-backend.herokuapp.com/messages"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/messages",
+    "title": "Post a message",
+    "version": "1.0.0",
+    "name": "PostMessage",
+    "group": "Messages",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User token given when user logs in.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Message text</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": false,
+            "field": "private",
+            "description": "<p>Message private indicator</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "user_id",
+            "description": "<p>Message user ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Message type</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Message title</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": false,
+            "field": "isAnswered",
+            "description": "<p>Message answered indicator</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Request example:",
+        "content": "const request = axios.create({\n    baseURL: 'https://advice-giver-backend.herokuapp.com',\n        timeout: 1000,\n        headers: {\n            authorization: \"userTokenGoesHere\"\n        }\n});\nrequest.post('/messages', {\n  message: \"Updated message text\",\n  private: false,\n  user_id: 8,\n  type: \"Academics\",\n  title: \"Support for math.\",\n  isAnswered: false,\n});",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Request Success",
+          "content": "[\n {\n        \"id\": 7,\n        \"message\": \"Here is a message\",\n        \"private\": true,\n        \"user_id\": 2,\n        \"type\": \"Academics\",\n        \"title\": \"Still need support\",\n        \"isAnswered\": false\n    }\n ]",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/messageRoute.js",
+    "groupTitle": "Messages",
+    "sampleRequest": [
+      {
+        "url": "https://advice-giver-backend.herokuapp.com/messages"
+      }
+    ]
+  },
+  {
+    "type": "put",
+    "url": "/messages/:id",
+    "title": "Update a message",
+    "version": "1.0.0",
+    "name": "UpdateMessage",
+    "group": "Messages",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>User token given when user logs in.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": true,
+            "field": "id",
+            "description": "<p>Message ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "message",
+            "description": "<p>Message text</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "private",
+            "description": "<p>Message private indicator</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": true,
+            "field": "user_id",
+            "description": "<p>Message user ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "type",
+            "description": "<p>Message type</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "title",
+            "description": "<p>Message title</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "isAnswered",
+            "description": "<p>Message answered indicator</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Request example:",
+        "content": "const request = axios.create({\n    baseURL: 'https://advice-giver-backend.herokuapp.com',\n        timeout: 1000,\n        headers: {\n            authorization: \"userTokenGoesHere\"\n        }\n});\nrequest.put('/messages/1', {\n  message: \"Updated message text\",\n});",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Request Success",
+          "content": "1",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/messageRoute.js",
+    "groupTitle": "Messages",
+    "sampleRequest": [
+      {
+        "url": "https://advice-giver-backend.herokuapp.com/messages/:id"
+      }
+    ]
+  },
+  {
     "type": "get",
     "url": "/users/:id",
     "title": "Get user",

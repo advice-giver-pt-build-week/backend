@@ -7,15 +7,12 @@ module.exports = {
 
 async function findAllAdvisors(){
   const table = await db( "users" );
-  const advisors = await table.filter( user => {
-    return user.adviceGiver === true;
-  } );
-  return advisors;
-};
+  return await table.filter( user => user.adviceGiver );
+}
 
 function add( users ){
   return db( "advisorsGroup" ).insert( users );
-};
+}
 
 // async function find(user) {
 //     let table = await db('advisorsGroup')
@@ -32,7 +29,7 @@ function add( users ){
 
 function findById( id ){
   return db( "users" ).where( { id } ).first();
-};
+}
 
 async function findBySeekerId( seeker_id ){
   
