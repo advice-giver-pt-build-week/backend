@@ -5,7 +5,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('announcements').insert([
-        {id: 1, newAnnouncement: "We are happy to announce Group Help Monday."},
+        {newAnnouncement: "We are happy to announce Group Help Monday."},
        ]);
     });
 };
