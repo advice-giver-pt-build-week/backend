@@ -80,19 +80,17 @@ router.get( "/", restricted, ( req, res ) => {
  * request.get('users/4');
  *
  * @apiSuccessExample Request Success
- *[
- {
-        "id": 1,
-        "username": "Amelia",
-        "password": "password",
-        "adviceGiver": false,
-        "expertise": null,
-        "yearsOfExperience": null,
-        "age": 25,
-        "email": "amelia@yahoo.com",
-        "img": null
-    }
- ]
+ *{
+    "id": 4,
+    "username": "Gwen",
+    "password": "password",
+    "adviceGiver": false,
+    "expertise": null,
+    "yearsOfExperience": null,
+    "age": 23,
+    "email": "gwenieLOU@aol.com",
+    "img": null
+}
  *
  */
 router.get( "/:id", restricted, ( req, res ) => {
@@ -147,19 +145,17 @@ router.get( "/:id", restricted, ( req, res ) => {
  * });
  *
  * @apiSuccessExample Request Success
- *[
- {
-        "id": 1,
-        "username": "Amelia",
-        "password": "password",
-        "adviceGiver": false,
-        "expertise": null,
-        "yearsOfExperience": null,
-        "age": 25,
-        "email": "amelia@yahoo.com",
-        "img": null
-    }
- ]
+ *{
+    "id": 8,
+    "username": "jeremiah1",
+    "password": "$2a$10$hufhEDza64YtcfmTnOK2E.n2AV6aS9eUoiYZ54V91FkqYL6Dpewj2",
+    "adviceGiver": true,
+    "expertise": "life",
+    "yearsOfExperience": 10,
+    "age": 33,
+    "email": "jeremiahtenbrink@gmail.com",
+    "img": null
+}
  *
  */
 router.put( "/:id", restricted, ( req, res ) => {

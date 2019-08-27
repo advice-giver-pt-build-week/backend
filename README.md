@@ -2,6 +2,11 @@
 
 Api for Advice Giver
 
+- [AdviserGroup](#advisergroup)
+	- [Add user adviser](#add-user-adviser)
+	- [Get all advisers](#get-all-advisers)
+	- [Get users advisers](#get-users-advisers)
+	
 - [Auth](#auth)
 	- [Register a new user.](#register-a-new-user.)
 	- [Login a user](#login-a-user)
@@ -13,6 +18,168 @@ Api for Advice Giver
 	
 
 
+# AdviserGroup
+
+## Add user adviser
+
+
+
+	POST /myMentors/
+
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| authorization			| String			|  <p>User token given when user logs in.</p>							|
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| seeker_id			| Integer			|  <p>Advice Seeker Id</p>							|
+| advisor_id			| Integer			|  <p>Advice Giver ID</p>							|
+
+### Examples
+
+Request example:
+
+```
+const request = axios.create({
+    baseURL: 'https://advice-giver-backend.herokuapp.com',
+        timeout: 1000,
+        headers: {
+            authorization: "userTokenGoesHere"
+        }
+});
+request.post('/myMentors', {
+  seeker_id: 1,
+  advisor_id: 3,
+});
+```
+
+### Success Response
+
+Request Success
+
+```
+{
+    "message": "created"
+}
+```
+## Get all advisers
+
+
+
+	GET /myMentors/
+
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| authorization			| String			|  <p>User token given when user logs in.</p>							|
+
+### Examples
+
+Request example:
+
+```
+const request = axios.create({
+    baseURL: 'https://advice-giver-backend.herokuapp.com',
+        timeout: 1000,
+        headers: {
+            authorization: "userTokenGoesHere"
+        }
+});
+request.get('/myMentors'/7);
+```
+
+### Success Response
+
+Request Success
+
+```
+[
+ {
+        "id": 5,
+        "username": "Buffet",
+        "password": "password",
+        "adviceGiver": true,
+        "expertise": "Finance",
+        "yearsOfExperience": 10,
+        "age": 75,
+        "email": "warren@berkshiregmail.com",
+        "img": null
+    },
+ {
+        "id": 6,
+        "username": "Freud",
+        "password": "password",
+        "adviceGiver": true,
+        "expertise": "Counseling",
+        "yearsOfExperience": 10,
+        "age": null,
+        "email": "freudian@yahoo.com",
+        "img": null
+    },...
+ ]
+```
+## Get users advisers
+
+
+
+	GET /myMentors/:id
+
+### Headers
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| authorization			| String			|  <p>User token given when user logs in.</p>							|
+
+### Examples
+
+Request example:
+
+```
+const request = axios.create({
+    baseURL: 'https://advice-giver-backend.herokuapp.com',
+        timeout: 1000,
+        headers: {
+            authorization: "userTokenGoesHere"
+        }
+});
+request.get('/myMentors'/7);
+```
+
+### Success Response
+
+Request Success
+
+```
+[
+ {
+        "id": 1,
+        "username": "Amelia",
+        "password": "password",
+        "adviceGiver": false,
+        "expertise": null,
+        "yearsOfExperience": null,
+        "age": 25,
+        "email": "amelia@yahoo.com",
+        "img": null
+    },
+ {
+        "id": 2,
+        "username": "Norah",
+        "password": "password",
+        "adviceGiver": false,
+        "expertise": null,
+        "yearsOfExperience": null,
+        "age": 25,
+        "email": "norah@gmail.com",
+        "img": null
+    }...
+ ]
+```
 # Auth
 
 ## Register a new user.
@@ -152,19 +319,17 @@ request.get('users/4');
 Request Success
 
 ```
-[
- {
-        "id": 1,
-        "username": "Amelia",
-        "password": "password",
-        "adviceGiver": false,
-        "expertise": null,
-        "yearsOfExperience": null,
-        "age": 25,
-        "email": "amelia@yahoo.com",
-        "img": null
-    }
- ]
+{
+    "id": 4,
+    "username": "Gwen",
+    "password": "password",
+    "adviceGiver": false,
+    "expertise": null,
+    "yearsOfExperience": null,
+    "age": 23,
+    "email": "gwenieLOU@aol.com",
+    "img": null
+}
 ```
 ## Get all users
 
@@ -279,18 +444,16 @@ request.put('users/4', {
 Request Success
 
 ```
-[
- {
-        "id": 1,
-        "username": "Amelia",
-        "password": "password",
-        "adviceGiver": false,
-        "expertise": null,
-        "yearsOfExperience": null,
-        "age": 25,
-        "email": "amelia@yahoo.com",
-        "img": null
-    }
- ]
+{
+    "id": 8,
+    "username": "jeremiah1",
+    "password": "$2a$10$hufhEDza64YtcfmTnOK2E.n2AV6aS9eUoiYZ54V91FkqYL6Dpewj2",
+    "adviceGiver": true,
+    "expertise": "life",
+    "yearsOfExperience": 10,
+    "age": 33,
+    "email": "jeremiahtenbrink@gmail.com",
+    "img": null
+}
 ```
 

@@ -1,24 +1,20 @@
-const db = require('../database/dbConfig.js');
+const db = require( "../database/dbConfig.js" );
 
 module.exports = {
-    add,
-    findById,
-    findBySeekerId,
-    findAllAdvisors
-
-}
-
-async function findAllAdvisors(){
-    const table = await db('users');
-    const advisors = await table.filter(user => {
-        return user.adviceGiver === true
-    })
-    return advisors;
+  add, findById, findBySeekerId, findAllAdvisors
+  
 };
 
+async function findAllAdvisors(){
+  const table = await db( "users" );
+  const advisors = await table.filter( user => {
+    return user.adviceGiver === true;
+  } );
+  return advisors;
+};
 
-function add(users) {
-    return db('advisorsGroup').insert(users)
+function add( users ){
+  return db( "advisorsGroup" ).insert( users );
 };
 
 // async function find(user) {
@@ -34,23 +30,22 @@ function add(users) {
 //     return db('advisorsGroup').where({ userToDelete }).del()
 // };
 
-function findById(id) {
-    return db('users').where({ id }).first();
+function findById( id ){
+  return db( "users" ).where( { id } ).first();
 };
 
-async function findBySeekerId(seeker_id) {
-
-    let users = await db('advisorsGroup').where({ seeker_id })
-
-    let advisorList = [];
-    for (let i = 0; i < users.length; i++) {
-        let adviceGiver = await findById(users[i].advisor_id);
-        advisorList.push(adviceGiver)
-    }
-       
-    
-    return advisorList;
-    
+async function findBySeekerId( seeker_id ){
+  
+  let users = await db( "advisorsGroup" ).where( { seeker_id } );
+  
+  let advisorList = [];
+  for( let i = 0; i < users.length; i++ ){
+    let adviceGiver = await findById( users[ i ].advisor_id );
+    advisorList.push( adviceGiver );
+  }
+  
+  return advisorList;
+  
 }
 
 
